@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.css']
 })
 export class Index {
-  // title = 'app works!';
+ 
 }
