@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { Index } from '../pages/index'
+import { IndexComponent } from '../pages/index';
+import { NoteService } from '../serve/note.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [NoteService]
 })
 export class AppComponent {
-  title = 'app works!';
+  // title = 'app works!';
+  constructor(private noteService: NoteService) {}; 
 }

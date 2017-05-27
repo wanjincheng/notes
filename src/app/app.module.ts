@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import  { Index } from '../pages/index';
+import  { IndexComponent } from '../pages/index';
 @NgModule({
   declarations: [
     AppComponent,
-    Index
+    IndexComponent
   ],
   imports: [
     BrowserModule,
