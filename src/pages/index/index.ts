@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NoteService,NoteNumber } from '../../serve/note.service';
+import { NoteService,NoteNumber,NoteBoolean } from '../../serve/note.service';
 import { Note } from '../../serve/note';
 @Component({
   selector: 'index-component',
@@ -16,8 +16,12 @@ export class IndexComponent implements OnInit  {
   //获取到公共服务的数据
   ngOnInit(): void {
     this.getNotes();
+  };//在组件加载是执行函数
+  ngChange(index):void{
+  	 this.noteNumber.up(index);
+  	console.log(this.noteNumber.NoteNumber);
   };
-  //在组件加载是执行函数
+  
   ngDelete(index):void{
   	// this.noteNumber.NoteNumber=1;
   	this.Notes.splice(index,1);

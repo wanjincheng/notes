@@ -5,7 +5,7 @@
 		</div>
 	</div>
 	<div class="iCContentLists">
-		<div class="iCContentList" *ngFor="let Note of Notes;let i=index;">
+		<div class="iCContentList" *ngFor="let Note of Notes;let i=index;"  (click)="ngChange(i)">
 				<div class="iCCTitle">
 					<h3>{{Note.title}}</h3>
 					<span class="iCCTime">
@@ -16,7 +16,6 @@
 				
 				<div class="iCCContent">
 					{{Note.content}}
-
 				</div>
 			</div>
 
