@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IndexComponent } from '../pages/index';
+import { IndexComponent } from '../pages/index/index';
+import { InputComponent } from '../pages/input/input';
 import { NoteService } from '../serve/note.service'
 @Component({
   selector: 'app-root',

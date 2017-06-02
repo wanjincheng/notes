@@ -1,2 +1,25 @@
+<div class="indexContent">
+	<div class="iCHeader">
+		<div class="iCHAdd">
+			<button type="button" class="iCHButton">新建日记</button>
+		</div>
+	</div>
+	<div class="iCContentLists">
+		<div class="iCContentList" *ngFor="let Note of Notes;let i=index;">
+				<div class="iCCTitle">
+					<h3>{{Note.title}}</h3>
+					<span class="iCCTime">
+					{{Note.time}}
+				</span>
+				<button class="iCCDelete" type="button" (click)="ngDelete(i)">删除</button>
+				</div>
+				
+				<div class="iCCContent">
+					{{Note.content}}
 
-<h2>我似乎一个  就撒旦刻录机阿斯顿经费</h2>
+				</div>
+			</div>
+
+
+	</div>
+</div>
