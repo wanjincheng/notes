@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NOTES } from './notes';
-import { Note } from './note';
+import { NOTES,Governs } from './notes';
+import { Note,Govern } from './note';
 @Injectable()
 export class NoteService{
 	getNotes(): Promise<Note[]> {
@@ -9,14 +9,14 @@ export class NoteService{
 }
 @Injectable()
 export class NoteNumber{
-	
-	NoteNumber:number;
-	up(index){
-		this.NoteNumber=index;
-		console.log(this.NoteNumber)
+	getGovern():Promise<Govern>{
+		return Promise.resolve(Governs);
 	}
-	//获取一个id值s
-	constructor(){}
+	// NoteNumber:number;
+	// up(index){
+	// 	this.NoteNumber=index;
+	// 	console.log(this.NoteNumber)
+	// }
+	// //获取一个id值s
+	// constructor(){}
 }
-export class NoteBoolean{NoteBoolean:boolean=false;}
-	//设置日记本显示是默认还是历史数据
