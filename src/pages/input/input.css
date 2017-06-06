@@ -81,3 +81,59 @@ font-size: 55px;
 color: #52bf5a;
 margin-top: -55px;
 }
+
+
+.ICCODelete{
+position: fixed;
+width: 100%;
+height: 100%;
+background: #000000;
+top: 0;
+z-index: 1000000;
+right: 0;
+opacity: 0.5;
+}
+ .ICCODContent{
+	width: 400px;
+	opacity: 1;
+	background:#ffffff;
+	height: 200px;
+	border-radius: 15px;
+	position: fixed;
+	z-index: 1000001;
+	top: 50%;
+	padding: 0 15px; 
+	right: 50%;
+	margin-top: -100px;
+	margin-right: -200px;
+}
+.ICCODContent h3{
+border-bottom: 1px solid #666666;
+padding-bottom: 8px;
+color: #ff0000;
+}
+ .ICCODContent p{
+	color: #000000;
+	font-size: 20px;
+}
+
+ .ICCODContent button{
+	width: 100px;
+	height:35px;
+	margin-right: 25px; 
+	color: #ffffff;
+	line-height: 30px;
+	border-radius: 5px;
+}
+.ICCODContent .ICCOUp{
+background: #ff0000;
+	border: 1px solid #ff0000;
+}
+.ICCODContent>div{
+	position: absolute;
+	bottom: 25px;
+}
+.ICCODContent .ICCODolete{
+	background: #4897e8;
+	border:1px solid #4897e8;
+}

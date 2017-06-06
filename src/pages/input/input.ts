@@ -8,6 +8,7 @@ import { Note, Govern } from '../../serve/note';
 })
 export class InputComponent implements OnInit, DoCheck {
     Notes;
+    Boolean:boolean;
     Govern: Govern;
     // 状态值
     Note: Note[];
@@ -22,13 +23,27 @@ export class InputComponent implements OnInit, DoCheck {
         }
         //获取到公共服务的数据
     ngDoCheck() {
-        console.log(this.Govern)
         if(this.Govern!=undefined && this.Govern.num!=null){
           this.Note=this.Notes[this.Govern.num];
-          console.log(this.Note)
         }
     }
 
+
+    iDelete(){
+      this.Boolean=true;
+    }
+    iDeleteN(){
+      this.Boolean=false;
+    };
+    iDeleteY(){
+      this.Notes.splice(this.Govern.num,1);
+      if(this.Notes.length==0){
+        this.Govern.NotesNumber=0;
+      }
+      this.Boolean=false;
+      this.Govern.num=null;
+      this.Note=null;
+    };
     ngOnInit(): void {
         this.getNotes();
         this.getGovern();

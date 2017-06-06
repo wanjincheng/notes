@@ -7,4 +7,5 @@ export class Note {
 export class Govern {
 	state : boolean;
 	num : number;
+	NotesNumber:number;
 };

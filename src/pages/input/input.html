@@ -1,19 +1,30 @@
 <div class="ICCurtain" *ngIf="!Note">
-	<h2>angular2 日记本</h2>
+    <h2>angular2 日记本</h2>
 </div>
 <div class="InContent" *ngIf="Note">
-	<div class="ICOperate">
-		<div class="ICOOper">
-			<!-- <button type="button" class="ICCOCall">取消</button> -->
-			<!-- <button type="button" class="ICCOUp">保存</button> -->
-			<button type="button"  class="ICCODolete">删除</button>
-		</div>
-	</div>
-	<div class="ICHeader">
-
-		<input  placeholder="请输入笔记标题" class="ICHInput" value="{{Note?Note.title:''}}" type="text" />
-	</div>
-	<div class="ICContent">
-		<textarea [(ngModel)]="Note.content"  class="ICHTextarea" placeholder="请输入笔记内容">{{Note?Note.content:''}}</textarea>
-	</div>
+    <div class="ICOperate">
+        <div class="ICOOper">
+            <!-- <button type="button" class="ICCOCall">取消</button> 
+			<button type="button" class="ICCOUp">保存</button> -->
+            <button type="button" (click)="iDelete()" class="ICCODolete">删除</button>
+        </div>
+    </div>
+    <div class="ICHeader">
+        <input placeholder="请输入笔记标题" class="ICHInput" [(ngModel)]="Note.title" type="text" />
+    </div>
+    <div class="ICContent">
+        <textarea [(ngModel)]="Note.content" class="ICHTextarea" placeholder="请输入笔记内容">{{Note?Note.content:''}}</textarea>
+    </div>
+</div>
+<div *ngIf="Boolean">
+    <div class="ICCODelete">
+    </div>
+    <div class="ICCODContent">
+        <h3>删除提示</h3>
+        <p>删除后不可恢复</p>
+        <div>
+            <button class="ICCOUp" (click)="iDeleteY()" type=" button ">确认删除</button>
+	<button class="ICCODolete " (click)="iDeleteN()" type="button">取消</button>
+        </div>
+    </div>
 </div>

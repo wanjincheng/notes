@@ -4,7 +4,10 @@
 			<button type="button" class="iCHButton">新建日记</button>
 		</div>
 	</div>
-	<div class="iCContentLists">
+	<div class="iCContentLists" *ngIf="NotesNumber==0">
+		<h3>暂无日记，请先添加</h3>
+	</div>
+	<div class="iCContentLists" *ngIf="NotesNumber!=0" >
 		<div class="iCContentList" *ngFor="let Note of Notes;let i=index;"  (click)="ngChange(i)">
 				<div class="iCCTitle">
 					<h3>{{Note.title}}</h3>
@@ -18,7 +21,7 @@
 					{{Note.content}}
 				</div>
 			</div>
-
+	
 
 	</div>
 </div>

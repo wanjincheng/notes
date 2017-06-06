@@ -1,39 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { NoteService, NoteNumber } from '../../serve/note.service';
-import { Note,Govern } from '../../serve/note';
+import { Note, Govern } from '../../serve/note';
 @Component({
     selector: 'index-component',
     templateUrl: './index.html',
     styleUrls: ['./index.css']
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, DoCheck {
     Notes: Note[];
-    Govern:Govern;
+    NotesNumber: number;
+    Govern: Govern;
     less;
     constructor(private noteService: NoteService, private noteNumber: NoteNumber) {};
     getNotes(): void {
-        this.noteService.getNotes().then(Notes => { this.Notes = Notes; });
+        this.noteService.getNotes().then(Notes => {
+            this.Notes = Notes;
+            this.Govern.NotesNumber = this.Notes.length;
+            this.NotesNumber = this.Govern.NotesNumber;
+        });
     };
-    getGovern():void{
-        this.noteNumber.getGovern().then(Govern=>{this.Govern=Govern;});
+    getGovern(): void {
+            this.noteNumber.getGovern().then(Govern => { this.Govern = Govern; });
 
-    }
-    //获取到公共服务的数据
+        }
+        //获取到公共服务的数据
     ngOnInit(): void {
-        this.getNotes();
-        this.getGovern();
 
+        this.getGovern();
+        this.getNotes();
     }; //在组件加载是执行函数
     ngChange(index): void {
-         this.Govern.num=index;
-    	// this.noteBoolean.NoteBoolean=false;
+        this.Govern.num = index;
     };
 
-
+    ngDoCheck() {
+        if (this.Govern != undefined && this.Govern.NotesNumber == 0) {
+            this.Govern.NotesNumber = 0;
+            this.NotesNumber = this.Govern.NotesNumber;
+        }
+    };
     ngDelete(index): void {
-       
-        // this.noteNumber.NoteNumber=1;
         this.Notes.splice(index, 1);
-        // console.log(this.noteNumber.NoteNumber);
+        if (this.Notes.length == 0) {
+            this.Govern.NotesNumber = 0;
+            this.NotesNumber = this.Govern.NotesNumber;
+        }
     }; //点击删除按钮删除日记文件
 }

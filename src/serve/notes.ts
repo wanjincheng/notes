@@ -6,5 +6,6 @@ export const NOTES: Note[] = [
 ];
 export let Governs:Govern={
 	state:false,
-	num:null
+	num:null,
+	NotesNumber:0
 };
