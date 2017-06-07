@@ -39,6 +39,9 @@ export class IndexComponent implements OnInit, DoCheck {
             this.NotesNumber = this.Govern.NotesNumber;
         }
     };
+    addNote(){
+        this.Govern.state=true;
+    };//添加日记
     ngDelete(index): void {
         this.Notes.splice(index, 1);
         if (this.Notes.length == 0) {

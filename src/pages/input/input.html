@@ -1,7 +1,7 @@
-<div class="ICCurtain" *ngIf="!Note">
+<div class="ICCurtain" *ngIf="!Note && !Cut">
     <h2>angular2 日记本</h2>
 </div>
-<div class="InContent" *ngIf="Note">
+<div class="InContent" *ngIf="Note && !Cut">
     <div class="ICOperate">
         <div class="ICOOper">
             <!-- <button type="button" class="ICCOCall">取消</button> 
@@ -16,6 +16,26 @@
         <textarea [(ngModel)]="Note.content" class="ICHTextarea" placeholder="请输入笔记内容">{{Note?Note.content:''}}</textarea>
     </div>
 </div>
+
+<div class="InContent" *ngIf="Cut">
+    <div class="ICOperate">
+        <div class="ICOOper">
+            <button type="button" (click)="cancel()" class="ICCOCall">取消</button> 
+            <button type="button" (click)="save()" class="ICCOUp">保存</button>
+            <!-- <button type="button" (click)="iDelete()" class="ICCODolete">删除</button> -->
+        </div>
+    </div>
+    <div class="ICHeader">
+        <input placeholder="请输入笔记标题" class="ICHInput" [(ngModel)]="CNote.title" type="text" />
+    </div>
+    <div class="ICContent">
+        <textarea [(ngModel)]="CNote.content" class="ICHTextarea" placeholder="请输入笔记内容">{{CNote.content}}</textarea>
+    </div>
+</div>
+
+
+
+
 <div *ngIf="Boolean">
     <div class="ICCODelete">
     </div>

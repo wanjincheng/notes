@@ -1,7 +1,7 @@
 <div class="indexContent">
 	<div class="iCHeader">
 		<div class="iCHAdd">
-			<button type="button" class="iCHButton">新建日记</button>
+			<button type="button" (click)="addNote()" class="iCHButton">新建日记</button>
 		</div>
 	</div>
 	<div class="iCContentLists" *ngIf="NotesNumber==0">
