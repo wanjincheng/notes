@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { NoteService, NoteNumber } from '../../serve/note.service';
 import { Note, Govern } from '../../serve/note';
+import { Location } from '../../serve/local.serbice';
 @Component({
     selector: 'input-component',
     templateUrl: './input.html',
@@ -24,7 +25,7 @@ export class InputComponent implements OnInit, DoCheck {
     //添加数据
     Date: string;
     //记录时间
-    constructor(private noteService: NoteService, private noteNumber: NoteNumber) {};
+    constructor(private noteService: NoteService, private noteNumber: NoteNumber, private ls: Location) {};
 
     getNotes(): void {
         this.noteService.getNotes().then(Notes => { this.Notes = Notes; }); //console.log(this.Notes[1])    
@@ -38,13 +39,24 @@ export class InputComponent implements OnInit, DoCheck {
                 this.Note = this.Notes[this.Govern.num];
             }
             if (this.Govern != undefined && this.Govern.state != false) {
-                console.log('wo zhun bei hao le')
                 this.Cut = this.Govern.state;
 
             }
         }
         //监听数据变化
-
+    ICCOCall() {
+        this.Govern.num = null;
+        this.Note = null;
+    };
+    //取消操作
+    ICCOUp() {
+            this.ls.setJson(this.Notes);
+            alert('保存成功');
+            this.Govern.num = null;
+            this.Note = null;
+        }
+        //保存操作
+        //修改数据
     iDelete() {
         this.Boolean = true;
     }
@@ -53,6 +65,7 @@ export class InputComponent implements OnInit, DoCheck {
     };
     iDeleteY() {
         this.Notes.splice(this.Govern.num, 1);
+        this.ls.setJson(this.Notes);
         if (this.Notes.length == 0) {
             this.Govern.NotesNumber = 0;
         }
@@ -60,10 +73,13 @@ export class InputComponent implements OnInit, DoCheck {
         this.Govern.num = null;
         this.Note = null;
     };
-    // 修改和删除某个数据
+    // 删除某个数据
     cancel() {
         this.Govern.state = false;
         this.Cut = this.Govern.state;
+        this.CNote={title: '',
+        content: '',
+        time: ''};
         this.Govern.num = null;
         this.Note = null;
     };
@@ -75,11 +91,16 @@ export class InputComponent implements OnInit, DoCheck {
             let Month = Dates.getMonth() + 1;
             let date = Dates.getDate();
             this.Date = Year + '-' + Month + '-' + date;
+            // 获取时间
             this.CNote.time = this.Date;
             this.Notes.push(this.CNote);
+            this.ls.setJson(this.Notes);
             alert('日记保存成功');
             this.Govern.state = false;
             this.Cut = this.Govern.state;
+            this.CNote={title: '',
+        content: '',
+        time: ''};
         } else if (this.CNote.title == '') {
             alert('日记不能为空')
         }

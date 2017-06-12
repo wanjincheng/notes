@@ -4,8 +4,8 @@
 <div class="InContent" *ngIf="Note && !Cut">
     <div class="ICOperate">
         <div class="ICOOper">
-            <!-- <button type="button" class="ICCOCall">取消</button> 
-			<button type="button" class="ICCOUp">保存</button> -->
+            <button type="button" (click)="ICCOCall()" class="ICCOCall">取消</button> 
+			<button type="button" (click)="ICCOUp()" class="ICCOUp">保存</button>
             <button type="button" (click)="iDelete()" class="ICCODolete">删除</button>
         </div>
     </div>
